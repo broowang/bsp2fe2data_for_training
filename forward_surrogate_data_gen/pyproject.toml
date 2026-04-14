@@ -1,0 +1,14 @@
+[project]
+name = "forward-surrogate-data-gen"
+version = "0.1.0"
+description = "Generate forward-surrogate training samples from B-spline surfaces and bsp2fe FE results."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "bspmap>=1.0.0",
+    "gmsh>=4.15.2",
+    "numpy>=2.2.6",
+    "pyvista>=0.46.3",
+    "torch>=2.6.0",
+    "torchfea>=1.0.8",
+]

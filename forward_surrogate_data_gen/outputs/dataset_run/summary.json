@@ -1,0 +1,13 @@
+{
+  "input_root": "C:\\Users\\broo\\Desktop\\AI for SoRo Design\\forward_surrogate_data_gen\\outputs\\geometry_cli_smoke_input",
+  "output_root": "C:\\Users\\broo\\Desktop\\AI for SoRo Design\\forward_surrogate_data_gen\\outputs\\dataset_run",
+  "case_count": 3,
+  "requested_pressures": [
+    0.02
+  ],
+  "success_count": 3,
+  "skipped_existing_count": 0,
+  "failure_count": 0,
+  "manifest_path": "C:\\Users\\broo\\Desktop\\AI for SoRo Design\\forward_surrogate_data_gen\\outputs\\dataset_run\\manifest.jsonl",
+  "failure_path": "C:\\Users\\broo\\Desktop\\AI for SoRo Design\\forward_surrogate_data_gen\\outputs\\dataset_run\\failures.jsonl"
+}
