@@ -1,0 +1,11 @@
+[project]
+name = "bsp2fe"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "bspmap>=1.0.0",
+    "gmsh>=4.15.2",
+    "torchfea>=1.0.8",
+]
