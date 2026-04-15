@@ -1,0 +1,16 @@
+{
+  "input_root": "C:\\Users\\broo\\Desktop\\AI for SoRo Design\\forward_surrogate_data_gen\\outputs\\geometry_cli_smoke_input",
+  "output_root": "C:\\Users\\broo\\Desktop\\AI for SoRo Design\\control_point_sampling\\outputs\\smoke_run",
+  "case_count": 3,
+  "success_count": 3,
+  "skipped_existing_count": 0,
+  "failure_count": 0,
+  "manifest_path": "C:\\Users\\broo\\Desktop\\AI for SoRo Design\\control_point_sampling\\outputs\\smoke_run\\manifest.jsonl",
+  "failure_path": "C:\\Users\\broo\\Desktop\\AI for SoRo Design\\control_point_sampling\\outputs\\smoke_run\\failures.jsonl",
+  "surface_output_root": "C:\\Users\\broo\\Desktop\\AI for SoRo Design\\control_point_sampling\\outputs\\smoke_run\\surface_files",
+  "control_grid_shape": [
+    64,
+    64
+  ],
+  "target_cavity_index": 1
+}

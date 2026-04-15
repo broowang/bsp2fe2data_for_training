@@ -1,0 +1,10 @@
+[project]
+name = "control-point-sampling"
+version = "0.1.0"
+description = "Sample raw B-spline control lattices into fixed-size Surface-*.npz files for FE runs."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "bspmap>=1.0.0",
+    "numpy>=2.2.6",
+]
