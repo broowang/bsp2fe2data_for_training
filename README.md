@@ -1,6 +1,7 @@
 # forward_surrogate_data_gen
 
 `forward_surrogate_data_gen` 是一个独立的数据生成层，专门负责把 `bsp2fe` 的有限元求解结果整理成可用于正向代理模型训练的标准样本。
+'control_point_sampling' 用于对原始控制点进行固定化采样，以此统一格式
 
 整个项目的大致流程如下
 
@@ -434,6 +435,107 @@ D:\Programs\Python\Python312\python.exe src\forward_surrogate_data_gen\generate_
   - 严格要求 v 向首尾层共面
 
 ---
+## 11. 采样方法
+
+当前控制点采样采用：
+
+- 在原始控制点网格索引空间上做规则重采样
+- 采样方法为双线性插值
+
+### 11.1 输入
+
+原始控制点网格：
+
+- `ctrl_raw.shape = (H_raw, W_raw, 3)`
+
+其中：
+
+- 第 1 维和第 2 维保持原始控制点排列顺序
+- 第 3 维是三维坐标 `(x, y, z)`
+
+### 11.2 输出
+
+采样后控制点网格：
+
+- `ctrl_sampled.shape = (64, 64, 3)`
+
+### 11.3 具体做法
+
+对原始控制点网格的两个索引轴分别做线性映射：
+
+- 高度方向：`[0, H_raw - 1] -> [0, 63]`
+- 宽度方向：`[0, W_raw - 1] -> [0, 63]`
+
+然后在原始控制点网格上做双线性插值，得到新的固定控制点网格。
+
+### 11.4 边界保持
+
+- 左上角对应原始左上角
+- 右上角对应原始右上角
+- 左下角对应原始左下角
+- 右下角对应原始右下角
+
+因此整体几何顺序不会乱。
+
+---
+
+
+
+## 12. 采样输出
+
+
+### 12.1 说明性样本
+
+保存在：
+
+- `output-root/samples/`
+
+主要字段包括：
+
+- `inner_ctrl_raw`
+- `outer_ctrl_raw`
+- `inner_ctrl_sampled`
+- `outer_ctrl_sampled`
+- `control_grid_shape`
+- `surface_validation_json`
+
+
+### 12.2 可直接给 FE 脚本使用的曲面文件
+
+保存在：
+
+- `output-root/surface_files/`
+
+文件名仍然保持为：
+
+- `Surface-0_*.npz`
+- `Surface-1_*.npz`
+
+并且使用：
+
+- `bspmap.BSP.save()`
+
+保存成和原始 `Surface-*.npz` 相同的格式
+
+---
+
+## 13.3. 采样运行脚本
+
+当前独立脚本：
+
+- `src/control_point_sampling/sample_control_points.py`
+
+运行方式：
+
+```bash
+cd "C:\Users\broo\Desktop\AI for SoRo Design\control_point_sampling"
+python src\control_point_sampling\sample_control_points.py ^
+  --input-root "C:\Users\broo\Desktop\AI for SoRo Design\geometry\geometry" ^
+  --output-root "C:\Users\broo\Desktop\AI for SoRo Design\control_point_sampling\outputs\control_point_samples" ^
+  --target-cavity-index 1 ^
+  --control-grid-height 64 ^
+  --control-grid-width 64
+```
 
 
 
