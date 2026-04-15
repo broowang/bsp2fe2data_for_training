@@ -1,10 +1,11 @@
 # forward_surrogate_data_gen
 
 `forward_surrogate_data_gen` 是一个独立的数据生成层，专门负责把 `bsp2fe` 的有限元求解结果整理成可用于正向代理模型训练的标准样本。
-'control_point_sampling' 用于对原始控制点进行固定化采样，以此统一格式
+`control_point_sampling` 用于对原始控制点进行固定化采样，以此统一格式
 
 整个项目的大致流程如下
 
+- 先通过`control_point_sampling`对原始控制点进行采样
 - 输入一组 B-spline 曲面控制点文件 `Surface-*.npz`
 - 调用 `bsp2fe` 完成充气有限元求解
 - 在原始 B-spline 曲面上固定采样 `64 x 64` 个曲面点
